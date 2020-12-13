@@ -9,7 +9,6 @@ export interface Todo {
 }
 
 class TodoStore {
-
     @observable todos: Todo[] = [
         { id: uuidv4(), title: 'task 1', completed: false },
         { id: uuidv4(), title: 'Test task', completed: false },
@@ -26,7 +25,7 @@ class TodoStore {
 
     @action addTitle = (text: string) => {
         this.title = text;
-    }
+    };
 
     @action showAlert = (text: string) => {
         this.textAlert = text;
@@ -34,11 +33,11 @@ class TodoStore {
         setTimeout(() => {
             this.hideAlert();
         }, 3000);
-    }
+    };
 
     @action hideAlert = () => {
         this.textAlert = '';
-    }
+    };
 
     @action addTodo = (todo: Todo) => {
         this.todos.push({ ...todo, id: uuidv4() });
@@ -47,13 +46,15 @@ class TodoStore {
     @action toggleTodo = (id: string) => {
         this.todos = this.todos.map(todo => {
             if (todo.id === id) {
+
                 return {
                     ...todo,
                     completed: !todo.completed
                 }
             }
+
             return todo;
-        })
+        });
     }
 
     @action removeTodo = (id: string) => {

@@ -8,7 +8,6 @@ const AddTodo = () => {
     const {title, addTitle, addTodo, showAlert, textAlert, hideAlert} = useContext(TodoStore);
 
     const handleAdd = useCallback(() => {
-
         if (!title.trim()) {
             showAlert('Title is empty!');
 
